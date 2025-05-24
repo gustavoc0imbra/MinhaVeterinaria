@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.uniara.AuthService.DTO.LoginUserDTO;
@@ -25,7 +26,7 @@ public class AuthController {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
-    @PostMapping(Constant.API_AUTH)
+    @PostMapping(Constant.API_LOGIN)
     public ResponseToken login(@RequestBody LoginUserDTO user) {
         Optional<User> userFound = userService.findByEmail(user.getEmail());
 
@@ -36,5 +37,10 @@ public class AuthController {
         String token = jwtTokenProvider.generateToken(userFound.get().getUsername());
 
         return new ResponseToken(token, "Autenticado");
+    }
+
+    @PostMapping(Constant.API_AUTH)
+    public boolean auth(@RequestHeader("Authorization") String token) {
+        return jwtTokenProvider.validateToken(token.replace("Bearer ", ""));
     }
 }
