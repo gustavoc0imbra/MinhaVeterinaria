@@ -10,6 +10,8 @@ import lombok.Setter;
 public class CreatePersonDTO {
     @NotBlank(message = "Nome é obrigatório")
     private String name;
+    @NotBlank(message = "CPF é obrigatório")
+    private String cpf;
     @NotBlank(message = "Telefone é obrigatório")
     private String phoneNumber;
 }

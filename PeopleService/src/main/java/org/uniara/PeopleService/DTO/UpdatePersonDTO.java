@@ -12,6 +12,8 @@ public class UpdatePersonDTO {
     private String id;
     @NotBlank(message = "Nome é obrigatório")
     private String name;
+    @NotBlank(message = "CPF é obrigatório")
+    private String cpf;
     @NotBlank(message = "Telefone é obrigatório")
     private String phoneNumber;
 }
