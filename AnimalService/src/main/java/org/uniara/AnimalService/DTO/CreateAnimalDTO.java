@@ -10,6 +10,7 @@ import lombok.Setter;
 public class CreateAnimalDTO {
     @NotBlank(message = "Nome é obrigatório")
     private String name;
+    private String personId;
     @NotBlank(message = "Espécie é obrigatório")
     private String specie;
     @NotBlank(message = "Raça é obrigatório")
