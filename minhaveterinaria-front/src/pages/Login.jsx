@@ -1,4 +1,4 @@
-import { Box, Button, Container, TextField } from "@mui/material";
+import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import BaseLayout from "../layouts/BaseLayout";
 import { useState } from "react";
 import { login } from "../services/userService";
@@ -18,16 +18,15 @@ export default function Login() {
         Swal.fire({
             title: "Login",
             icon: result.success ? "success" : "error",
-            text: result.message
+            text: result.body.message
         }).then(() => {
 
             if(result.success) {
+                localStorage.setItem("token", result.body.token);
                 navigate("/dashboard");
             }
 
         });
-
-        console.log(result);
     }
 
     return (
@@ -41,6 +40,7 @@ export default function Login() {
                             display: "flex",
                             flexDirection: "column",
                             justifyContent: "center",
+                            alignContent: "center",
                             gap: 2
                         }}
                     >
@@ -51,9 +51,13 @@ export default function Login() {
                                 display: "flex",
                                 flexDirection: "column",
                                 justifyContent: "center",
+                                alignContent: "center",
                                 gap: 2,
                             }}
                         >
+                            <Typography aria-label="Minha Veterinária título" textAlign={"center"} variant="h4">
+                                Minha Veterinária
+                            </Typography>
                             <TextField onChange={(e) => setEmail(e.target.value)} label="E-mail" type="email" />
                             <TextField onChange={(e) => setPassword(e.target.value)} label="Senha" type="password" />
                             <Button variant="contained" onClick={handleLogin}>Entrar</Button>
