@@ -55,7 +55,7 @@ public class AnimalConsumer {
             System.out.println("Erro ao converter json: ");
             e.printStackTrace();
         }
-        
+
         return json;
     }
 }

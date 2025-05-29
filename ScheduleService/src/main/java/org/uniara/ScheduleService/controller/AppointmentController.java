@@ -35,7 +35,7 @@ public class AppointmentController {
     * */
 
     @GetMapping(Constant.API_SCHEDULE)
-    public ResponseEntity<List<Appointment>> findAll(@RequestHeader("Authorization") String token) {
+    public ResponseEntity<List<ResponseAppointmentDTO>> findAll(@RequestHeader("Authorization") String token) {
 
         if (!authConsumer.isAuthenticated(token)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();

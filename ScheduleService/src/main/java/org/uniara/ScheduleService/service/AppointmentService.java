@@ -17,33 +17,33 @@ public class AppointmentService {
 
     private AnimalConsumer animalConsumer = new AnimalConsumer();
 
-    public List<Appointment> findAll(String token) {
+    public List<ResponseAppointmentDTO> findAll(String token) {
         List<Appointment> appointments = appointmentRepository.findAll();
-        HashMap<String, AppointmentAnimalDTO> personIds = new HashMap<String, AppointmentAnimalDTO>();
+        HashMap<String, AppointmentAnimalDTO> animalsIds = new HashMap<String, AppointmentAnimalDTO>();
         List<ResponseAppointmentDTO> responseAnimals = new ArrayList<ResponseAppointmentDTO>();
 
         /*animals.stream().map(animal -> (animal.getPersonId() != null | !personIds.containsKey(animal.getPersonId())) ? personIds.put(animal.getPersonId(), null) : null);*/
 
-       /* for (Appointment appointment : appointments) {
-            if (appointment.getPersonId() != null && !personIds.containsKey(appointment.getPersonId())) {
-                personIds.put(appointment.getPersonId(), null);
+        for (Appointment appointment : appointments) {
+            if (appointment.getAnimalId() != null && !animalsIds.containsKey(appointment.getAnimalId())) {
+                animalsIds.put(appointment.getAnimalId(), null);
             }
-        }*/
+        }
 
-        /*for (String personId : personIds.keySet()) {
-            AppointmentAnimalDTO person = animalConsumer.getById(token, personId);
-            personIds.put(personId, person);
-        }*/
+        for (String animalId : animalsIds.keySet()) {
+            AppointmentAnimalDTO person = animalConsumer.getById(token, animalId);
+            animalsIds.put(animalId, person);
+        }
 
-        /*for (Appointment appointment : appointments) {
-            if(personIds.containsKey(appointment.getPersonId())) {
-                responseAnimals.add(new ResponseAppointmentDTO(appointment, personIds.get(appointment.getPersonId())));
+        for (Appointment appointment : appointments) {
+            if(animalsIds.containsKey(appointment.getAnimalId())) {
+                responseAnimals.add(new ResponseAppointmentDTO(appointment, animalsIds.get(appointment.getAnimalId())));
             }else {
                 responseAnimals.add(new ResponseAppointmentDTO(appointment, null));
             }
-        }*/
+        }
 
-        return appointments;
+        return responseAnimals;
     }
 
     public Appointment save(Appointment appointment) {

@@ -31,41 +31,40 @@ export default function Login() {
 
     return (
         <>
-            <BaseLayout>
-                <Container>
-                    
+            <Container>
+                <Box
+                    sx={{
+                        height: "100vh",
+                        display: {
+                           xs: "flex",
+                           s: "inline"
+                        },
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignContent: "center",
+                        gap: 2
+                    }}
+                >
+                    <Image img={img} isRounded={true} />
                     <Box
+                        component={"form"}
                         sx={{
-                            height: "100vh",
                             display: "flex",
                             flexDirection: "column",
                             justifyContent: "center",
                             alignContent: "center",
-                            gap: 2
+                            gap: 2,
                         }}
                     >
-                        <Image img={img} isRounded={true} />
-                        <Box
-                            component={"form"}
-                            sx={{
-                                display: "flex",
-                                flexDirection: "column",
-                                justifyContent: "center",
-                                alignContent: "center",
-                                gap: 2,
-                            }}
-                        >
-                            <Typography aria-label="Minha Veterinária título" textAlign={"center"} variant="h4">
-                                Minha Veterinária
-                            </Typography>
-                            <TextField onChange={(e) => setEmail(e.target.value)} label="E-mail" type="email" />
-                            <TextField onChange={(e) => setPassword(e.target.value)} label="Senha" type="password" />
-                            <Button variant="contained" onClick={handleLogin}>Entrar</Button>
-                        </Box>
+                        <Typography aria-label="Minha Veterinária título" textAlign={"center"} variant="h4">
+                            Minha Veterinária
+                        </Typography>
+                        <TextField onChange={(e) => setEmail(e.target.value)} label="E-mail" type="email" />
+                        <TextField onChange={(e) => setPassword(e.target.value)} label="Senha" type="password" />
+                        <Button variant="contained" onClick={handleLogin}>Entrar</Button>
                     </Box>
-                </Container>
-            </BaseLayout>
-
+                </Box>
+            </Container>
         </>
     );
 }
