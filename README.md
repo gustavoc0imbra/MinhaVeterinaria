@@ -40,6 +40,11 @@ aplicando os conceitos de serviços separados em apis e autenticando usuário at
 ## Endpoints Schedule API
 ![image](https://github.com/user-attachments/assets/f8b1dd07-2622-4a6f-bdd0-ac6d79b28bc5)
 
+> [!WARNING]
+> Ao iniciar a api de autenticação (Auth Service) será criado automaticamente um usuário padrão para poder usar todos os outros endpoints  
+> **Login:** `admin@email.com`  
+> **Senha:** `admin123`
+
 ## Como gerar token JWT
 - Para gerar o token é necessário enviar para API de autenticação o seguinte corpo de requisição:
 ```
