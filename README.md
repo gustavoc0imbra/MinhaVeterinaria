@@ -107,3 +107,22 @@ Se estiver login certo é retornar o token e a mensagem "Autenticado", caso cont
 `curl --location --request DELETE 'http://localhost:8082/api/v0/animals/684a2f0ba685fb5748aba913' --header 'Accept: application/json' --header 'Authorization: Bearer ••••••'`  
 ![image](https://github.com/user-attachments/assets/3d4d76d8-f341-40d3-908d-fc6971277fe6)
 
+- Schedule Service - Listar todos agendamentos cadastrados  
+`curl --location 'http://localhost:8083/api/v0/schedule' --header 'Accept: application/json' --header 'Authorization: Bearer ••••••'`  
+![image](https://github.com/user-attachments/assets/b578bf47-d55a-4a33-8ea1-b0706a2a5413)
+
+- Schedule Service - Salvar um agendamento (é obrigatório passar o campo animalId):  
+`curl --location 'http://localhost:8083/api/v0/schedule' --header 'Accept: application/json' --header 'Content-Type: application/json' --header 'Authorization: Bearer ••••••' --data '{"type":"Banho","animalId":"6835a660040df34cfb0eef83","date":"2025-05-30","price":"90"}'`  
+![image](https://github.com/user-attachments/assets/a731bf89-9318-4d13-a94c-e44a21bb4f21)
+
+- Schedule Service - Atualizar agendamento (é obrigatório passar o campo animalId)):  
+`curl --location --request PUT 'http://localhost:8083/api/v0/schedule' --header 'Accept: application/json' --header 'Content-Type: application/json' --header 'Authorization: Bearer ••••••' --data '{"id":"684a320131574a67f499bfb6","animalId":"6835a660040df34cfb0eef83","type":"Vacina att preço","date":"2025-05-31T00:00:00.000+00:00","status":"P","price":70.431}'`  
+![image](https://github.com/user-attachments/assets/de1e5055-5fde-4bd0-8e81-142c287a0338)
+
+- Schedule Service - Buscar pelo id:
+`curl --location 'http://localhost:8083/api/v0/schedule/684a320131574a67f499bfb6' --header 'Accept: application/json' --header 'Authorization: ••••••'`
+![image](https://github.com/user-attachments/assets/55e965bc-f9b5-4aef-85f7-cc455659a8ef)
+
+- Schedule Service - Deletar agendamento  
+`curl --location --request DELETE 'http://localhost:8083/api/v0/schedule/684a320131574a67f499bfb6' --header 'Accept: application/json' --header 'Authorization: ••••••'`  
+![image](https://github.com/user-attachments/assets/57e948e7-69d4-493e-ad88-d85250a80157)
